@@ -1,0 +1,289 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body, html{
+    height: 100%;
+    margin: 0;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #EF3B24;
+    /* background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%); */
+}
+
+
+.content-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Add any additional styles you need for this container */
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Ensure it stays behind the content */
+    opacity: 0.5; /* Adjust transparency as needed */
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire viewport */
+}
+
+img{
+    width: 200px;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%,-25%);
+    margin-bottom: 0px;
+}
+
+h2{
+    position: relative;
+    font-size: 100px;
+    color: #EF3B24;
+    -webkit-text-stroke: 0.3vw #002D62;
+    font-weight: 500;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+ h2::before{
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    font-size: 100px;
+    font-weight: 500;
+    color: #7CB9E8; 
+    -webkit-text-stroke: 0.3vw #7CB9E8;
+    border-right: 2px solid  #7CB9E8;
+    border-bottom: 6px solid  #7CB9E8;
+    overflow: hidden;
+    animation: animate 3s linear infinite;
+} 
+
+@keyframes animate{
+    0%,10%, 100%{
+        width: 0;
+    }
+    70%,90%{
+        width: 100%;
+    }
+}
+
+.myBtn{
+    margin-top: 20px;
+    width: 300px;
+    border: 2px solid #7CB9E8;
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: color 1s ease; /* Transition for the text color */
+}
+
+.myBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Start from the left */
+    width: 100%;
+    height: 100%;
+    background-color: #7CB9E8;
+    transition: left 1s ease; /* Transition for the background fill */
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.myBtn:hover::before {
+    left: 0; /* Fill in the background on hover */
+}
+
+.myBtn:hover {
+    color: #002D62; /* Optional: Change text color on hover */
+    cursor: pointer;
+}
+
+.fa-basketball {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: bounce 4s  infinite, moveAcross 10s linear infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    10% { transform: translateY(-80px); }
+    20% { transform: translateY(0); }
+    30% { transform: translateY(-60px); }
+    40% { transform: translateY(0); }
+    50% { transform: translateY(-40px); }
+    60% { transform: translateY(0); }
+    70% { transform: translateY(-20px); }
+    80% { transform: translateY(0); }
+    90% { transform: translateY(-10px); }
+}
+
+@keyframes moveAcross {
+    0% { left: 0; }
+    100% { left: 100%; }
+}
+
+#statsSection {
+    transform: translateY(100vh); /* Start off-screen */
+    transition: transform 1s; /* Smooth transition for movement */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+    position: relative; /* Needed for absolute positioning of the pseudo-element */
+}
+
+#statsSection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(''); /* No image by default */
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* No image, hence opacity is 0 by default */
+    z-index: -1; /* Ensure it's behind the content */
+}
+
+#statsSection.shai-background::before {
+    /* Only set the image and opacity when this class is added */
+    background-image: url('./Portfolio Intro/imgs/shia.jpeg');
+    opacity: 0.3; /* Set the desired opacity for the image */
+}
+
+/* Dark mode*/
+/* Toggle Switch Styles */
+.theme-switch-wrapper {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display:none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    background-color: white;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Dark Theme Styles */
+body.dark-mode {
+    background-color: #002D62;
+}
+
+
+body.dark-mode h2 {
+    background: none;
+    color: #7CB9E8;
+    -webkit-text-stroke: 0.3vw #002D62;
+}
+
+body.dark-mode h2::before {
+    -webkit-text-stroke: 0.3vw #FDBB30;
+    color: #FDBB30;
+    border-right: 2px solid #FDBB30;
+    border-bottom: 6px solid #FDBB30;
+    background: none;
+}
+
+body.dark-mode h2::before {
+    animation-name: animate-dark;
+}
+
+body.dark-mode .myBtn{
+    border: 2px solid #FDBB30;
+}
+
+body.dark-mode .myBtn::before{
+    background-color: #FDBB30;
+}
+
+@keyframes animate-dark {
+    0%,10%, 100% {
+        width: 0;
+        color: #FDBB30;
+    }
+    70%,90% {
+        width: 100%;
+        color: #FDBB30; /* Change color when animation happens */
+    }
+}
+
+.fa-regular{
+    margin-left: 10px;
+}
+
+.fa-solid{
+    margin-right: 10px;
+}

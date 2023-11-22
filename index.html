@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>OKC Thunder</title>
+</head>
+<body>
+    <div class="theme-switch-wrapper">
+        <i class="fa-solid fa-sun" style="color: #ffffff;"></i>
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+        <i class="fa-regular fa-moon" style="color: #ffffff;"></i>
+    </div>
+    <div class="content-section">
+        <div class="video-background">
+            <video autoplay muted loop>
+                <source src="./imgs/OKC-hype-vid.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <img src="./imgs/okclogo.png" alt="">
+        <h2 data-text="WELCOME">WELCOME</h2>
+        <button class="myBtn">Start Exploring</button>
+    </div>
+    <div id="statsSection" style="display: none;">
+        <!-- Stats will be loaded here by the loadStats function -->
+    </div>   
+</body>
+<script src="app.js"></script>
+</html>
